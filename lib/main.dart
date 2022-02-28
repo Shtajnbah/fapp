@@ -19,10 +19,45 @@ class MyFirstApp extends StatelessWidget {
       appBar: AppBar(
         title: Text('Hello world!', style: TextStyle(fontSize: 32)),
       ),
-      body: Body(),
+      body: Column(children: [MyButten(), MyButten(), MyButten(),] ,)
     ));
   }
 }
+
+class MyButten extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _MyButtenState();
+  //стрелочная функция
+  }
+
+class _MyButtenState extends State <MyButten>
+{
+  int value = 0;
+  double fontSize = 22;
+  Color color = Colors.blue;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+        child:
+        Text("Value: $value", style: TextStyle(fontSize: fontSize), ),
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(color)
+    ),
+    //роисходит при нажатии
+    onPressed: () {
+          setState(() {
+            value = value + 1;
+            color = Colors.lightGreenAccent ;
+            if (value > 5) {
+              fontSize = 32;
+              color = Colors.orange;
+          }
+          });
+
+  },
+    );
+
+}}
 
 
 
